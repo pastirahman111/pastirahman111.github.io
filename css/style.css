@@ -12,14 +12,63 @@
 *
 * ======================================================= */
 body {
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* Background hitam */
   font-family: "Quicksand", Arial, sans-serif;
   font-weight: 400;
   font-size: 15px;
   line-height: 1.8;
-  color: rgba(0, 0, 0, 0.7); }
-  @media screen and (max-width: 992px) {
-    body {
-      font-size: 16px; } }
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* Responsif untuk layar kecil */
+@media screen and (max-width: 992px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* Bingkai animasi */
+.animated-border {
+  position: relative;
+  padding: 10px;
+  background: black;
+  z-index: 0;
+}
+
+.animated-border::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(45deg, 
+    red, orange, yellow, green, cyan, blue, violet, red);
+  background-size: 400% 400%;
+  animation: borderAnimate 10s linear infinite;
+  z-index: -1;
+  border-radius: 10px;
+}
+
+@keyframes borderAnimate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Agar konten di atas border */
+.animated-border > * {
+  position: relative;
+  z-index: 1;
+}
 
 a {
   color: #2c98f0;
